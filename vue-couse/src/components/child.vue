@@ -1,3 +1,3 @@
 <template>
-  <div>child</div>
+  <div>{{this.$route.params.id}}child</div>
 </template>
