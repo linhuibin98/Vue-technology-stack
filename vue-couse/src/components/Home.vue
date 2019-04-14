@@ -2,11 +2,15 @@
   <div>
     <router-link tag="button" :to="{name: 'List', params: {name: 'nihaoa1'}}">去列表页</router-link>
     <button @click="toParent">去parent</button>
-    <router-link tag="button" :to="{name: 'About'}">去About</router-link>   
+    <router-link tag="button" :to="{name: 'About'}">去About</router-link>
+    <p>{{name}}</p>
+    <p>{{username}}</p> 
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 //组件内路由钩子：beforeRouteEnter: 无法调用this, beforeRouteLeave, beforeRouteUpdate
 
 export default {
@@ -28,7 +32,22 @@ export default {
       const id = 99;
       this.$router.push(`/parent/child/${id}`);
     }
-  }
+  },
+  computed: {
+    // 方式二，使用vuex 上的 mapState，mapMutation .....方法
+    ...mapState({
+      name: state => state.name,
+      username: state => state.user.username
+    })
+
+    //调用 store 方式一
+    // name () {
+    //   return this.$store.state.name;
+    // },
+    // username () {
+    //   return this.$store.state.user.username;
+    // }
+  },
 }
 </script>
 

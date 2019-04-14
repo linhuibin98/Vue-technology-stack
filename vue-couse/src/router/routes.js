@@ -53,7 +53,7 @@ export default [
     path: '/login',
     name: 'Login',
     component: () => import('@/components/Login')
-  },
+  },  
   {
     path: '/store',
     name: 'Store',
