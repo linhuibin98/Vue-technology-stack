@@ -1,4 +1,6 @@
 import Home from '@/components/Home'
+import Email from '@/components/Email'
+import Tel from '@/components/Tel'
 
 //路由守卫 : beforeEnter
 
@@ -41,9 +43,21 @@ export default [
     }]
   },
   {
+    path: '/email',
+    components: {
+      email: Email,
+      tel: Tel
+    }
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/components/Login')
+  },
+  {
+    path: '/store',
+    name: 'Store',
+    component: () => import('@/components/store')
   },
   {
     path: '*',

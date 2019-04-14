@@ -6,8 +6,8 @@
     </div>
     <transition-group name="router">
       <router-view key='default'/>
-      <router-view key="parent" name="email"/>
-      <router-view key="tel" name="tel" />
+      <router-view key="Email" name="email"/>
+      <router-view key="Tel" name="tel" />
     </transition-group>
   </div>
 </template>
