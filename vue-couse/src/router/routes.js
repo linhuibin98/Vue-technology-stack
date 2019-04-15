@@ -60,6 +60,11 @@ export default [
     component: () => import('@/components/store')
   },
   {
+    path: '/getter',
+    name: 'getter',
+    component: () => import('@/components/Getter')
+  },
+  {
     path: '*',
     component: () => import('@/components/ERROR_404')
   }

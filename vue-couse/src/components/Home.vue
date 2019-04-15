@@ -9,7 +9,13 @@
 </template>
 
 <script>
+
 import {mapState} from 'vuex'
+// 二、若vuex的module使用了命名空间
+/*
+import {createNamespacedHelpers} from 'vuex'
+const { mapState } = createNamespacedHelpers('user');
+*/
 
 //组件内路由钩子：beforeRouteEnter: 无法调用this, beforeRouteLeave, beforeRouteUpdate
 
@@ -34,19 +40,41 @@ export default {
     }
   },
   computed: {
+    //若使用了命名空间
+      //一：引入 createNamespacedHelpers
+      /*
+      ...mapState({
+       username: state => state.username
+      })
+      */
+     //二：直接在mapState的第一个参数中，赋值为命名空间的name
+
+    ...mapState('user', {
+      username: state => state.username
+    }),
+
+    ...mapState({
+      name: state => state.name
+    })
+
+
     // 方式二，使用vuex 上的 mapState，mapMutation .....方法
+    /*
     ...mapState({
       name: state => state.name,
       username: state => state.user.username
     })
+    */
 
     //调用 store 方式一
-    // name () {
-    //   return this.$store.state.name;
-    // },
-    // username () {
-    //   return this.$store.state.user.username;
-    // }
+    /*
+    name () {
+      return this.$store.state.name;
+    },
+    username () {
+      return this.$store.state.user.username;
+    }
+    */
   },
 }
 </script>
