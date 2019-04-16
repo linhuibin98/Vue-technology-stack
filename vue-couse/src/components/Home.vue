@@ -3,14 +3,15 @@
     <router-link tag="button" :to="{name: 'List', params: {name: 'nihaoa1'}}">去列表页</router-link>
     <button @click="toParent">去parent</button>
     <router-link tag="button" :to="{name: 'About'}">去About</router-link>
-    <p>{{name}}</p>
-    <p>{{username}}</p> 
+    <p>name: {{name}}</p>
+    <p>username: {{username}}</p> 
+    <p><button @click="handleChangeName">修改name</button></p> <!--修改state.name -->
   </div>
 </template>
 
 <script>
 
-import {mapState} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 // 二、若vuex的module使用了命名空间
 /*
 import {createNamespacedHelpers} from 'vuex'
@@ -34,9 +35,19 @@ export default {
     next();
   },
   methods: {
+    ...mapMutations([    // mutations中的方法注册到vue实例中
+      'handleName',
+    ]),
     toParent () {
       const id = 99;
       this.$router.push(`/parent/child/${id}`);
+    },
+    handleChangeName () {
+      //方式一
+      // this.$store.commit('handleName', 'dsdfas');  //跳过actions，直接调用mutations修改，更新视图
+      
+      //方式二
+      this.handleName('nnnnnnn')
     }
   },
   computed: {
@@ -55,7 +66,9 @@ export default {
 
     ...mapState({
       name: state => state.name
-    })
+    }),
+
+    
 
 
     // 方式二，使用vuex 上的 mapState，mapMutation .....方法

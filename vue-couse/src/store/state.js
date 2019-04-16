@@ -1,6 +1,7 @@
 const state = {
   name: 'linhuibin',
-  appNmae: 'study'
+  appNmae: 'study',
+  stateValue: ''
 }
 
 export default state;
