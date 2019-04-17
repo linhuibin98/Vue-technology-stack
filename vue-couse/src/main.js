@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Bus from './bus'
+import Mock from './mock'
 
 Vue.config.productionTip = false;
 
