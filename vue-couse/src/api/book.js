@@ -1,4 +1,4 @@
-import HttpRequest from './index'
+import HttpRequest from './app2'
 
 const axios = new HttpRequest();
 
