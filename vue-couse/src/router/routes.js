@@ -50,6 +50,10 @@ export default [
     }
   },
   {
+    path: '/count-to',
+    component: () => import('@/views/count-to')
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/components/Login')
