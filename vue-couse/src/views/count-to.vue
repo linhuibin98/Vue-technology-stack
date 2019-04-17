@@ -1,6 +1,6 @@
 <template>
   <div>
-    <count-to ref="counter" :end-val="endVal">
+    <count-to ref="counter" :end-val="endVal" @getEndNum="endNum">
       <span slot="left">计数器：</span>
       <span slot="right">完美</span>
     </count-to>
@@ -28,7 +28,10 @@ export default {
     },
     changeVal () {
       this.endVal = Math.random() * 1000;
-    }
+    },
+    endNum (num) {
+      console.log(num);
+    } 
   }
 }
 </script>

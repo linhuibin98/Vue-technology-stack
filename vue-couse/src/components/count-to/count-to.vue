@@ -94,6 +94,9 @@ export default {
   watch: {
     endVal (newVal, oldVal) {
       this.counter.update(newVal);
+      setTimeout(() => {
+        this.$emit('getEndNum', this.$refs.count.innerText);
+      }, 1005)
     }
   },
   mounted () {
@@ -111,3 +114,7 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+@import './count-to.less';
+</style>
