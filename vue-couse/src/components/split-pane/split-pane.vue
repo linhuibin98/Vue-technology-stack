@@ -2,9 +2,7 @@
   <div ref="outer" class="split-pane-wrapper">
     <div class="pane pane-left" :style="{width: leftOffsetPercent}"></div>
     <div class="pane-trigger-con" :style="{left: triggerLeft,width: triggerWidth + 'px'}" @mousedown="handleMousedown"></div>
-    <div class="pane pane-right" :style="{left: leftOffsetPercent}">
-      <button @click="changeOffset">改变大小</button>
-    </div>
+    <div class="pane pane-right" :style="{left: leftOffsetPercent}"></div>
   </div>
 </template>
 
@@ -12,6 +10,10 @@
 export default {
   name: 'SplitPane',
   props:{
+    value: {
+      type: Number,
+      default: 0.3
+    },
     triggerWidth: {
       type: Number,
       default: 8
@@ -27,23 +29,20 @@ export default {
   },
   data () {
     return {
-      leftOffset: 0.3,
+      // leftOffset: 0.3,
       canMove: false,
       initOffset: 0
     }
   },
   computed: {
     leftOffsetPercent () {
-      return `${this.leftOffset * 100}%`;
+      return `${this.value * 100}%`;
     },
     triggerLeft () {
       return `calc(${this.leftOffsetPercent} - ${this.triggerWidth / 2}px)`
     }
   },
   methods: {
-    changeOffset () {
-      this.leftOffset -= 0.02;
-    },
     handleMousedown (event) {
       document.addEventListener('mousemove', this.handleMousemove);
       document.addEventListener('mouseup', this.handleMouseup);
@@ -59,7 +58,7 @@ export default {
       } else if (offsetPercent >= this.max) {
         offsetPercent = this.max;        
       }
-      this.leftOffset = offsetPercent;
+      this.$emit('update:value', offsetPercent);
     },
     handleMouseup () {
       this.canMove = false;
@@ -93,6 +92,8 @@ export default {
         position: absolute;
         top: 0;
         z-index: 9;
+        user-select: none;
+        cursor: col-resize;
       }
     }
   }

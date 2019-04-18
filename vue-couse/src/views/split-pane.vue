@@ -1,6 +1,6 @@
 <template>
   <div class="split-pane-con">
-    <split-pane></split-pane>
+    <split-pane :value.sync="value"></split-pane>
   </div>
 </template>
 
@@ -8,6 +8,11 @@
 import SplitPane from '../components/split-pane'
 export default {
   name: 'split',
+  data () {
+    return {
+      value: 0.5
+    }
+  },
   components: {
     SplitPane
   }
