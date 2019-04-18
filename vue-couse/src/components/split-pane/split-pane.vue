@@ -15,12 +15,21 @@ export default {
     triggerWidth: {
       type: Number,
       default: 8
+    },
+    min: {
+      props: Number,
+      default: 0.1
+    },
+    max: {
+      type: Number,
+      default: 0.9
     }
   },
   data () {
     return {
       leftOffset: 0.3,
-      canMove: false
+      canMove: false,
+      initOffset: 0
     }
   },
   computed: {
@@ -35,16 +44,22 @@ export default {
     changeOffset () {
       this.leftOffset -= 0.02;
     },
-    handleMousedown () {
+    handleMousedown (event) {
       document.addEventListener('mousemove', this.handleMousemove);
       document.addEventListener('mouseup', this.handleMouseup);
+      this.initOffset = event.pageX - event.srcElement.getBoundingClientRect().left;
       this.canMove = true;
     },
     handleMousemove (event) {
       if (!this.canMove) return;
       const outerRect = this.$refs.outer.getBoundingClientRect();
-      const offset = event.pageX - outerRect.left;
-      this.leftOffset = offset / outerRect.width;
+      let offsetPercent = (event.pageX -this.initOffset + this.triggerWidth / 2 - outerRect.left) / outerRect.width;
+      if (offsetPercent <= this.min) {
+        offsetPercent = this.min;
+      } else if (offsetPercent >= this.max) {
+        offsetPercent = this.max;        
+      }
+      this.leftOffset = offsetPercent;
     },
     handleMouseup () {
       this.canMove = false;
