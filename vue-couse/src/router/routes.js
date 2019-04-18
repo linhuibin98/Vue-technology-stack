@@ -69,6 +69,11 @@ export default [
     component: () => import('@/components/Getter')
   },
   {
+    path: '/split',
+    name: 'split',
+    component: () => import('@/views/split-pane')
+  },
+  {
     path: '*',
     component: () => import('@/components/ERROR_404')
   }
