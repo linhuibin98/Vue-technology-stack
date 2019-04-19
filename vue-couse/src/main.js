@@ -13,17 +13,20 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$bus = Bus;
 
-
+/*
 let list = [{name: 'lll'}, {name: 'bbb'}]
 
 const getEle = (h) => {
   return list.map(item => h('li', {
       on: {
-        // 'click': handleClick
+        'click': () => {
+          console.log('111')
+        }
       }
     }, item.name)
   )
 }
+*/
 
 
 /* eslint-disable no-new */
@@ -72,8 +75,17 @@ new Vue({
   ]),
   */
 
-  render: h => h('div', [
-    h('ul', getEle(h))
+  /* 
+  render: h => h('div', [    // render中实现 v-for
+    h('ul', {
+      on: {
+        'click': () => {
+          console.log(222);
+        }
+      }
+    }, getEle(h))
   ]),
+  */
+  render: (h) => h(App),
   template: '<App/>'
 })

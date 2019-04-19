@@ -28,7 +28,7 @@ export default [
   {
     path: '/list/:name',
     name: 'List',
-    component: () => import('@/components/List'),
+    component: () => import('@/components/List.vue'),
     props: route => ({
       food: route.query.food
     })
@@ -72,6 +72,10 @@ export default [
     path: '/split',
     name: 'split',
     component: () => import('@/views/split-pane')
+  },
+  {
+    path: '/render-page',
+    component: () => import('@/views/render-page')
   },
   {
     path: '*',
