@@ -1,6 +1,6 @@
 <template>
   <div>
-    <count-to ref="counter" :end-val="endVal" @getEndNum="endNum">
+    <count-to ref="counter" :end-val="endVal" @animation-end="endNum">
       <span slot="left">计数器：</span>
       <span slot="right">完美</span>
     </count-to>

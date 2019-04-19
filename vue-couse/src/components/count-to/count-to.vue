@@ -95,8 +95,8 @@ export default {
     endVal (newVal, oldVal) {
       this.counter.update(newVal);
       setTimeout(() => {
-        this.$emit('getEndNum', this.$refs.count.innerText);
-      }, 1005)
+        this.$emit('animation-end', this.$refs.count.innerText);
+      }, this.duration + 5)
     }
   },
   mounted () {
@@ -110,6 +110,10 @@ export default {
       setTimeout(() =>{
         this.counter.start();
       }, this.delay);
+      
+      setTimeout(() => {
+        this.$emit('animation-end', this.$refs.count.innerText);
+      }, this.duration + 5)
     })
   }
 }
