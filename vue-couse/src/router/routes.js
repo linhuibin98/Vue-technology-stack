@@ -78,6 +78,10 @@ export default [
     component: () => import('@/views/render-page')
   },
   {
+    path: '/menu',
+    component: () => import('@/views/menu-page')
+  },
+  {
     path: '*',
     component: () => import('@/components/ERROR_404')
   }

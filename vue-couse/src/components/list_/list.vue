@@ -1,14 +1,15 @@
 <template>
   <ul>
     <li v-for="(item, index) in list" :key="item + index">
-      <span>{{item}}</span>
-      <renderDom :name="item" :render-func="render"></renderDom>
+      <!-- <renderDom :list="item" :renderFn="render"></renderDom> -->
+      <vnode :list="item" :renderFn="render"></vnode>
     </li>
   </ul>
 </template>
 
 <script>
-import RenderDom from '@/components/render-dom.js'
+// import RenderDom from '@/components/render-dom.js'
+import Vnode from '@/components/Vnode.js'
 export default {
   props: {
     list: {
@@ -21,7 +22,8 @@ export default {
     }
   },
   components: {
-    RenderDom
+    // RenderDom,
+    Vnode
   }
 }
 </script>

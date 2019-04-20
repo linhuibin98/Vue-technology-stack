@@ -1,6 +1,6 @@
 <template>
   <div>
-    <list :list="list" :render="renderFunc"></list>
+    <list :list="list" :render="renderFn"></list>
   </div>
 </template>
 
@@ -16,8 +16,8 @@ export default {
     List
   },
   methods: {
-    renderFunc (h, name) {
-      return h('span', name)
+    renderFn (h, name) {
+      return h('i', name)
     }
   }
 }

@@ -2,9 +2,11 @@ export default {
   functional: true,
   props: {
     list: String,
-    renderFn: Function
+    renderFn: {
+      type: Function
+    }
   },
   render: (h, ctx) => {
-    return ctx.props.renderFn(h, ctx.props.list)
+    return h('i', ctx.props.list)
   }
 }
